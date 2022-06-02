@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Markdown Previewer by SM-Designs</title>
+    <script src="./js/marked.js"></script>
+    <script>
+      function updatePreview() {
+        let previewElement = document.getElementById("preview");
+        let editorValue = document.getElementById("editor").value;
+        let markedUpHTML = marked(editorValue, {breaks: true});
+        previewElement.innerHTML = markedUpHTML;
+      }
+
+      function setDefault() {
+        let defaultText = `\
+  # SM-Designs
+  ## Markdown Previewer
+  [Learn more about SM-Designs](http://designs.stevenmosquez.com/)
+  <dl>
+    <dt>Definition list</dt>
+    <dd>Is something people use sometimes.</dd>
+
+    <dt>Markdown in HTML</dt>
+    <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
+  </dl>
+
+\`\`\`
+function exampleOf() {
+  return multiLineCodeBlock;
+}
+\`\`\`
+
+  \`This is example of incline code\`
+
+  - This
+  - is
+  - an
+  - example
+  - of
+  - list
+  - items
+
+  > This is an example of block quote
+
+  ![SM-Designs](images/white_logo.png)
+
+**This is an example of Bolded Text**
+        `;
+
+        let editorField = document.getElementById("editor");
+        let previewElement = document.getElementById("preview");
+        editorField.value = defaultText;
+        previewElement.innerHTML = marked(defaultText, {breaks: true});
+      }
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+  <body onload="setDefault()" class="bg-success">
+    <div class="container-fluid bg-success">
+      <div class="row">
+        <div class="col text-center text-white bg-success my-3">
+          <h1> Markdown Previewer by SM-Designs </h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 bg-primary d-flex flex-column">
+          <h2 class="text-white text-center my-3"> Editor </h2>
+         <div class="form-group flex-grow-1 d-flex flex-column">
+          <textarea id="editor" onkeyup="updatePreview()" class="form-control flex-grow-1"></textarea>
+         </div>
+        </div>
+        <div class="col-6 bg-danger text-white">
+            <h2 class="text-white text-center my-3"> Preview </h2>
+            <div id="preview"> </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+  </body>
+</html>
